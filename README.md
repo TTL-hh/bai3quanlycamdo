@@ -78,3 +78,81 @@ Lưu lịch sử thay đổi trạng thái.
 
 ## Ảnh ERD
 ![ERD](images/erd.png)
+
+# 4.1 Script tạo bảng SQL
+
+```sql
+CREATE DATABASE PawnShopDB;
+GO
+
+USE PawnShopDB;
+GO
+
+CREATE TABLE CUSTOMER (
+    CustomerID INT IDENTITY PRIMARY KEY,
+    FullName NVARCHAR(100),
+    Phone VARCHAR(20),
+    Address NVARCHAR(255),
+    CCCD VARCHAR(20),
+    CreatedAt DATETIME DEFAULT GETDATE()
+);
+
+CREATE TABLE CONTRACT (
+    ContractID INT IDENTITY PRIMARY KEY,
+    CustomerID INT,
+    LoanAmount DECIMAL(18,2),
+    StartDate DATE,
+    Deadline1 DATE,
+    Deadline2 DATE,
+    Status NVARCHAR(50),
+    CreatedAt DATETIME DEFAULT GETDATE(),
+
+    FOREIGN KEY (CustomerID)
+    REFERENCES CUSTOMER(CustomerID)
+);
+
+CREATE TABLE ASSET (
+    AssetID INT IDENTITY PRIMARY KEY,
+    AssetName NVARCHAR(100),
+    AssetType NVARCHAR(100),
+    EstimatedValue DECIMAL(18,2),
+    AssetStatus NVARCHAR(50)
+);
+
+CREATE TABLE CONTRACT_ASSET (
+    ContractID INT,
+    AssetID INT,
+
+    PRIMARY KEY (ContractID, AssetID),
+
+    FOREIGN KEY (ContractID)
+    REFERENCES CONTRACT(ContractID),
+
+    FOREIGN KEY (AssetID)
+    REFERENCES ASSET(AssetID)
+);
+
+CREATE TABLE PAYMENT_LOG (
+    PaymentID INT IDENTITY PRIMARY KEY,
+    ContractID INT,
+    PayDate DATETIME DEFAULT GETDATE(),
+    AmountPaid DECIMAL(18,2),
+    Collector NVARCHAR(100),
+    RemainingDebt DECIMAL(18,2),
+
+    FOREIGN KEY (ContractID)
+    REFERENCES CONTRACT(ContractID)
+);
+
+CREATE TABLE CONTRACT_LOG (
+    LogID INT IDENTITY PRIMARY KEY,
+    ContractID INT,
+    OldStatus NVARCHAR(50),
+    NewStatus NVARCHAR(50),
+    ChangedAt DATETIME DEFAULT GETDATE(),
+
+    FOREIGN KEY (ContractID)
+    REFERENCES CONTRACT(ContractID)
+);
+```
+
