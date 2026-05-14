@@ -44,8 +44,6 @@ Hệ thống được xây dựng bằng SQL Server với các thành phần:
 
 ---
 
----
-
 # 3. Thiết kế cơ sở dữ liệu
 
 ## 3.1 Các bảng chính
@@ -73,8 +71,6 @@ Lưu lịch sử trả nợ.
 ### CONTRACT_LOG
 
 Lưu lịch sử thay đổi trạng thái.
-
----
 
 ---
 
