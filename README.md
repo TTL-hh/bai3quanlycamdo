@@ -273,10 +273,7 @@ END;
 ```
 
 ### Ảnh minh họa
-
-```md
 ![E2](images/E2.png)
-```
 
 ---
 
@@ -331,9 +328,8 @@ END;
 
 ### Ảnh minh họa
 
-```md
+
 ![E3](images/E3.png)
-```
 
 ---
 
@@ -393,10 +389,9 @@ END;
 
 ### Ảnh minh họa
 
-```md
+
 ![E5.1](images/E5.1.png)
 ![E5.2](images/E5.2.png)
-```
 
 ---
 
