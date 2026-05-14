@@ -156,3 +156,5 @@ CREATE TABLE CONTRACT_LOG (
 );
 ```
 
+## Ảnh tạo bảng SQL
+![BSQL](images/BSQL.png)
