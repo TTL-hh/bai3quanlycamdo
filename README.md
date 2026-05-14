@@ -158,3 +158,35 @@ CREATE TABLE CONTRACT_LOG (
 
 ## Ảnh tạo bảng SQL
 ![BSQL](images/BSQL.png)
+
+```
+
+```
+# 5. Event 1 – Store Procedure đăng ký hợp đồng (Vay tiền)
+
+```sql
+CREATE PROCEDURE sp_CreateContract
+    @CustomerID INT,
+    @LoanAmount DECIMAL(18,2),
+    @Deadline1 DATE,
+    @Deadline2 DATE
+AS
+BEGIN
+    INSERT INTO CONTRACT(
+        CustomerID,
+        LoanAmount,
+        StartDate,
+        Deadline1,
+        Deadline2,
+        Status
+    )
+    VALUES(
+        @CustomerID,
+        @LoanAmount,
+        GETDATE(),
+        @Deadline1,
+        @Deadline2,
+        N'Đang vay'
+    );
+END;
+```
