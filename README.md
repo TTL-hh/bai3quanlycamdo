@@ -81,3 +81,4 @@ Lưu lịch sử thay đổi trạng thái.
 # 4. Sơ đồ ERD
 
 ## Ảnh ERD
+![ERD](images/erd.png)
